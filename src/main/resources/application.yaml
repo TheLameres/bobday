@@ -1,0 +1,8 @@
+bobday:
+  url: https://python.test.bobdaytech.ru/api/v1
+  username: test
+  password: test
+
+response:
+  save: true
+  directory: json
