@@ -7,9 +7,7 @@ import thelameres.bobday.client.interceptors.Base64AuthorizationRequestIntercept
 @ConfigurationProperties("bobday")
 public record BobdayClientConfigurationProperties(String url,
                                                   String username,
-                                                  char[] password,
-                                                  boolean saveResponse,
-                                                  String directoryToSave) {
+                                                  char[] password) {
     public RequestInterceptor getAuthRequest() {
         return new Base64AuthorizationRequestInterceptor(username, password);
     }

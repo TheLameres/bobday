@@ -34,7 +34,7 @@ public class FileSaverServiceImpl implements FileSaverService {
         String fileName = "json_response_" + time + ".json";
         try {
             String jsonResponse = objectMapper.writeValueAsString(object);
-            Path path = Paths.get(properties.directory(), fileName);
+            Path path = getPath(fileName);
             if (!Files.exists(path)) {
                 Files.createFile(path);
             }
@@ -43,5 +43,10 @@ public class FileSaverServiceImpl implements FileSaverService {
             log.error("Can't write json file: " + fileName, e);
         }
 
+    }
+
+    private Path getPath(String fileName) {
+        if (properties.directory() != null) return Paths.get(properties.directory(), fileName);
+        else return Paths.get(fileName);
     }
 }
